@@ -34,6 +34,7 @@ public class Calculadora {
         }
     }
 
+    //resolver
     public float solve(float number1, float number2, char operator){
         switch (operator) {
             case '+':
@@ -47,5 +48,9 @@ public class Calculadora {
             default:
                 throw new IllegalArgumentException("Llego un perador no válido: " + operator);
         }
+    }
+
+    private boolean hasNoDecimals(float number){
+        return number - (int) number < 0.00001;
     }
 }
