@@ -14,17 +14,11 @@ public class Calculadora {
     }
     //operaciones
 
-    private float sum(float number1, float number2){
-        return number1 + number2;
-    }
+    private float sum(float number1, float number2){ return number1 + number2; }
 
-    private float substract(float number1, float number2){
-        return number1 - number2;
-    }
+    private float substract(float number1, float number2){ return number1 - number2; }
 
-    private float multiply(float number1, float number2){
-        return number1 * number2;
-    }
+    private float multiply(float number1, float number2){ return number1 * number2; }
 
     private float divide(float number1, float number2){
         if(number2 != 0){
@@ -32,6 +26,16 @@ public class Calculadora {
         }else{
             throw new ArithmeticException("se intento dividir por 0!!!");
         }
+    }
+
+    //utilidad
+    private boolean hasNoDecimals(float number){ return Math.abs(number - (int) number) < 0.00001; }
+
+    private Object[] convertSplittedText(String[] splittedText){
+        float number1 = Float.parseFloat(splittedText[0]);
+        float number2 = Float.parseFloat(splittedText[1]);
+        char operator = splittedText[2].charAt(0);
+        return new Object[]{number1, number2, operator};
     }
 
     //resolver
@@ -48,10 +52,6 @@ public class Calculadora {
             default:
                 throw new IllegalArgumentException("Llego un operador no válido: " + operator);
         }
-    }
-
-    private boolean hasNoDecimals(float number){
-        return Math.abs(number - (int) number) < 0.00001;
     }
 
     public String[] splitExpression(String text){
