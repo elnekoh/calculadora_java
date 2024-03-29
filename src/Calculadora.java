@@ -69,7 +69,7 @@ public class Calculadora {
         if (position == -1 && text == ""){
             throw new IllegalArgumentException("Llego un una expresion vacia");
         } else if (position == -1 && text != "") {
-            return new String[]{text};
+            return new String[]{text,null,null};
         }
 
         //si encontró
@@ -90,6 +90,9 @@ public class Calculadora {
         }
 
         //el primer numero NO es negativo
+        if(textAfterMatch == ""){
+            return new String[]{textBeforeMatch,null,operator};
+        }
         return new String[]{textBeforeMatch,textAfterMatch,operator};
     }
 }
